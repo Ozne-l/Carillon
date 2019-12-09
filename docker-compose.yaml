@@ -1,0 +1,7 @@
+version: '3'
+services:
+  back:
+    build: ./back
+    ports:
+      - "5000:80"
+    restart: always
