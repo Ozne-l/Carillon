@@ -1,9 +1,13 @@
+import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:dio/dio.dart';
+import 'package:device_info/device_info.dart';
 
 
-var serverIp = "10.41.167.119";
+var serverIp = "192.168.1.2";
 var serverPort = "5000";
 
 void main() => runApp(MyApp());
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Carillon Home Page'),
     );
   }
 }
@@ -46,11 +50,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void openCamera() async {
     var image = await ImagePicker.pickImage(source: ImageSource.camera);
-    setState(() {
-      display = true;
-      bytes = image.readAsBytesSync();
-    });
+    bool rotate = false;
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    if (androidInfo.manufacturer == "samsung")
+      rotate = true;
+    postImage(image, rotate);
+  }
 
+  void postImage(File image, bool rotate) async {
+    var url = "http://" + serverIp + ":" + serverPort + "/users";
+    String base64Image = base64Encode(image.readAsBytesSync());
+    Dio dio = new Dio();
+    FormData formData = FormData.fromMap({
+      "name": "image",
+      "image": MultipartFile.fromString(base64Image),
+      "rotate": rotate
+    });
+    var response = await dio.post(url, data: formData);
+    if (response.toString().length > 0) {
+      setState(() {
+        bytes = base64Decode(response.toString());
+        display = true;
+      });
+    }
   }
 
   @override
