@@ -1,28 +1,75 @@
+@font-face {
+    font-family: "Comfortaa-Regular";
+    src: url("/static/fonts/Comfortaa-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comfortaa-Light";
+    src: url("/static/fonts/Comfortaa-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Comfortaa-Bold";
+    src: url("/static/fonts/Comfortaa-Bold.ttf") format("truetype");
+}
+
 body, html {
     height: 100%;
     overflow-x: hidden;
 }
 
 body {
-    background-image: linear-gradient(#25313f, #020202);
+    background-image: linear-gradient(#2b3c4e, #020202);
     margin: 0;
     padding: 0;
+    font-family: "Comfortaa-Regular";
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 div.upper {
     width: 100vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+div.titles {
+    line-height: 10px;
+    position: absolute;
+    left: 33%;
+}
+
+div.rigth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 div.email {
     background-color: white;
+    border-radius: 3px;
+    width: 300px;
     margin: 40px;
-    padding: 40px;
+    padding: 20px;
+}
+
+input.email {
+    width: 200px;
+    height: 30px;
+}
+
+input.submit {
+    width: 35px;
+    height: 30px;
+    background-color: #fde163;
+    border-style: none;
+    border-radius: 3px;
+    text-align: center;
 }
 
 div.middle {
@@ -32,19 +79,70 @@ div.middle {
 }
 
 div.access {
+    display: flex;
+    flex-direction: column;
     width: 30vw;
 }
 
-div.alert {
+div.strength {
+    display: flex;
+    flex-direction: column;
     width: 30vw;
 }
 
-p.middle {
+div.subtitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+div.lower {
+    align-self: center;
+    margin-bottom: 20px;
+}
+
+img.icon {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+img.logo {
+    width: 400px;
+}
+
+h1 {
+    font-family: "Comfortaa-Bold";
+    font-size: 48px;
     color: white;
 }
 
-/* A CHANGER */
-h1, h2, h3 {
-    font-family: Arial, Helvetica, sans-serif;
+h2 {
+    font-family: "Comfortaa-Bold";
+    font-size: 30px;
+    color: white;
+}
+
+h3 {
+    font-family: "Comfortaa-Regular";
+    font-size: 24px;
+    color: #cccccc;
+}
+
+h4 {
+    font-family: "Comfortaa-Light";
+    font-size: 10px;
+    color: white;
+}
+
+h5 {
+    font-family: "Comfortaa-Regular";
+    font-size: 30px;
+    color: black;
+}
+
+span.bold {
+    font-family: "Comfortaa-Bold";
+    font-size: 25px;
     color: white;
 }
