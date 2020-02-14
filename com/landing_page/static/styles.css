@@ -33,6 +33,7 @@ div.upper {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 20px;
     margin-left: 20px;
@@ -40,8 +41,9 @@ div.upper {
 
 div.titles {
     line-height: 10px;
-    position: absolute;
-    left: 33%;
+    position: relative;
+    align-content: center;
+    left: 10%;
 }
 
 div.rigth {
@@ -76,6 +78,7 @@ div.middle {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 div.access {
